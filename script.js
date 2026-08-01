@@ -1,143 +1,144 @@
-// ==========================
-// Current Page
-// ==========================
+// ===============================
+// PAGE NAVIGATION
+// ===============================
 
 let currentPage = 1;
 
-// ==========================
-// Next Page
-// ==========================
-
-function nextPage(page){
-
-    document.getElementById("page"+currentPage).classList.remove("active");
-
-    document.getElementById("page"+page).classList.add("active");
-
+function nextPage(page) {
+    document.getElementById("page" + currentPage).classList.remove("active");
+    document.getElementById("page" + page).classList.add("active");
     currentPage = page;
-
 }
 
-// ==========================
-// Music
-// ==========================
+// ===============================
+// MUSIC
+// ===============================
 
 const music = document.getElementById("music");
-
 let playing = false;
 
-function toggleMusic(){
+function toggleMusic() {
 
-    if(playing){
-
+    if (playing) {
         music.pause();
-
         playing = false;
-
         document.querySelector(".music-btn").innerHTML = "🔇";
-
-    }else{
-
+    } else {
         music.play();
-
         playing = true;
-
         document.querySelector(".music-btn").innerHTML = "🔊";
-
     }
 
 }
 
-// Auto Play
+// Auto Play After First Click
 
-document.body.addEventListener("click",function(){
+document.body.addEventListener("click", () => {
 
-    if(!playing){
-
+    if (!playing) {
         music.play();
-
         playing = true;
-
+        document.querySelector(".music-btn").innerHTML = "🔊";
     }
 
-},{once:true});
+}, { once: true });
 
-// ==========================
-// Birthday Wishes
-// ==========================
+// ===============================
+// RANDOM WISHES
+// ===============================
 
-const wishes=[ Click )
+const wishes = [
 
 "🎂 Happy Birthday Mamali ❤️",
-
-"🌹 May God bless you.",
-
+"🌹 May all your dreams come true.",
 "💖 Stay Happy Forever.",
-
 "🥰 You are very Special.",
-
-"🎉 Enjoy Your Beautiful Day.",
-
+"🎉 Wishing You Endless Happiness.",
 "🌸 Keep Smiling Always.",
-
-"❤️ Wishing You Endless Love.",
-
-"🎁 Lots Of Happiness For You."
+"❤️ May God Bless You.",
+"🎁 Have a Wonderful Birthday."
 
 ];
 
-function lightCandle(){
+function showWish() {
 
-    document.getElementById("cakeImage").src = "images/Light on.png";
+    let random = Math.floor(Math.random() * wishes.length);
 
+    document.getElementById("wishText").innerHTML = wishes[random];
 
+}
+
+// ===============================
+// LIGHT CANDLE
+// ===============================
+
+function lightCandle() {
+
+    const cake = document.getElementById("cakeImage");
+
+    if (cake) {
+        cake.src = "images/Light on.png";
+    }
+
+    alert("🕯️ Candles are Lighted!");
 
     nextPage(8);
 
 }
 
-function blowCandle(){
+// ===============================
+// BLOW CANDLE
+// ===============================
 
- 
+function blowCandle() {
+
     createConfetti();
+
+    alert("🎉 Happy Birthday Mamali ❤️");
 
     nextPage(9);
 
 }
 
-// ==========================
-// Confetti
-// ==========================
+// ===============================
+// CONFETTI
+// ===============================
 
-function createConfetti(){
+function createConfetti() {
 
-    for(let i=0;i<100;i++){
+    for (let i = 0; i < 120; i++) {
 
-        let confetti=document.createElement("div");
+        let confetti = document.createElement("div");
 
-        confetti.className="confetti";
+        confetti.className = "confetti";
 
-        confetti.style.left=Math.random()*100+"vw";
+        confetti.style.left = Math.random() * 100 + "vw";
 
-        confetti.style.animationDuration=(Math.random()*3+2)+"s";
+        confetti.style.animationDuration =
+            (Math.random() * 3 + 2) + "s";
+
+        confetti.style.opacity = Math.random();
+
+        confetti.style.transform =
+            "rotate(" + Math.random() * 360 + "deg)";
 
         document.body.appendChild(confetti);
 
-        setTimeout(function(){
+        setTimeout(() => {
 
             confetti.remove();
 
-        },5000);
+        }, 5000);
 
     }
 
 }
 
-// ==========================
-// Keyboard Support
-// ==========================
+// ===============================
+// KEYBOARD SUPPORT
+// ===============================
 
-document.addEventListener("keydown",function(e){
+document.addEventListener("keydown", function(e){
 
     if(e.key==="ArrowRight"){
 
@@ -151,20 +152,22 @@ document.addEventListener("keydown",function(e){
 
 });
 
-// ==========================
-// Button Vibration
-// ==========================
+// ===============================
+// MOBILE VIBRATION
+// ===============================
 
-if(navigator.vibrate){
+function vibrate(){
 
-    document.querySelectorAll("button").forEach(function(btn){
+    if(navigator.vibrate){
 
-        btn.addEventListener("click",function(){
+        navigator.vibrate(100);
 
-            navigator.vibrate(100);
-
-        });
-
-    });
+    }
 
 }
+
+document.querySelectorAll("button").forEach(btn=>{
+
+    btn.addEventListener("click",vibrate);
+
+});
