@@ -86,21 +86,11 @@ const wishes=[
 
 ];
 
-function showWish(){
-
-    let random=Math.floor(Math.random()*wishes.length);
-
-    document.getElementById("wishText").innerHTML=wishes[random];
-
-}
-
-// ==========================
-// Cake
-// ==========================
-
 function lightCandle(){
 
-    alert("🕯️ Candles are Lighted!");
+    document.getElementById("cakeImage").src = "images/Light on.png";
+
+    alert("🕯️ Candles are now glowing!");
 
     nextPage(8);
 
