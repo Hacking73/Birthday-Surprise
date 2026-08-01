@@ -90,7 +90,7 @@ function lightCandle(){
 
     document.getElementById("cakeImage").src = "images/Light on.png";
 
-    alert("🕯️ Candles are now glowing!");
+
 
     nextPage(8);
 
@@ -98,8 +98,7 @@ function lightCandle(){
 
 function blowCandle(){
 
-    alert("🎉 Happy Birthday Mamali ❤️");
-
+ 
     createConfetti();
 
     nextPage(9);
