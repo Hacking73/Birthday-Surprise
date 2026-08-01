@@ -4,18 +4,10 @@
 
 let currentPage = 1;
 
-function nextPage(page){
-
-    document
-    .getElementById("page"+currentPage)
-    .classList.remove("active");
-
-    document
-    .getElementById("page"+page)
-    .classList.add("active");
-
+function nextPage(page) {
+    document.getElementById("page" + currentPage).classList.remove("active");
+    document.getElementById("page" + page).classList.add("active");
     currentPage = page;
-
 }
 
 // ===============================
@@ -23,79 +15,56 @@ function nextPage(page){
 // ===============================
 
 const music = document.getElementById("music");
-
 let playing = false;
 
-function toggleMusic(){
+function toggleMusic() {
 
-    if(playing){
-
+    if (playing) {
         music.pause();
-
         playing = false;
-
-        document.querySelector(".music-btn").innerHTML="🔇";
-
-    }
-
-    else{
-
+        document.querySelector(".music-btn").innerHTML = "🔇";
+    } else {
         music.play();
-
         playing = true;
-
-        document.querySelector(".music-btn").innerHTML="🔊";
-
+        document.querySelector(".music-btn").innerHTML = "🔊";
     }
 
 }
 
 // Auto Play After First Click
 
-document.body.addEventListener("click",function(){
+document.body.addEventListener("click", () => {
 
-    if(!playing){
-
+    if (!playing) {
         music.play();
-
-        playing=true;
-
-        document.querySelector(".music-btn").innerHTML="🔊";
-
+        playing = true;
+        document.querySelector(".music-btn").innerHTML = "🔊";
     }
 
-},{once:true});
-
+}, { once: true });
 
 // ===============================
-// RANDOM BIRTHDAY WISH
+// RANDOM WISHES
 // ===============================
 
-const wishes=[
+const wishes = [
 
 "🎂 Happy Birthday Mamali ❤️",
-
 "🌹 May all your dreams come true.",
-
-"💖 Stay happy forever.",
-
-"🥰 You deserve endless love.",
-
-"🎉 Wishing you joy and success.",
-
-"🌸 Keep smiling always.",
-
-"❤️ You are my favorite person.",
-
-"🎁 Have the most wonderful birthday."
+"💖 Stay Happy Forever.",
+"🥰 You are very Special.",
+"🎉 Wishing You Endless Happiness.",
+"🌸 Keep Smiling Always.",
+"❤️ May God Bless You.",
+"🎁 Have a Wonderful Birthday."
 
 ];
 
-function showWish(){
+function showWish() {
 
-    let random=Math.floor(Math.random()*wishes.length);
+    let random = Math.floor(Math.random() * wishes.length);
 
-    document.getElementById("wishText").innerHTML=wishes[random];
+    document.getElementById("wishText").innerHTML = wishes[random];
 
 }
 
@@ -103,9 +72,15 @@ function showWish(){
 // LIGHT CANDLE
 // ===============================
 
-function lightCandle(){
+function lightCandle() {
 
-    alert("🕯️ Candles are now glowing!");
+    const cake = document.getElementById("cakeImage");
+
+    if (cake) {
+        cake.src = "images/Light on.png";
+    }
+
+    alert("🕯️ Candles are Lighted!");
 
     nextPage(8);
 
@@ -115,7 +90,9 @@ function lightCandle(){
 // BLOW CANDLE
 // ===============================
 
-function blowCandle(){
+function blowCandle() {
+
+    createConfetti();
 
     alert("🎉 Happy Birthday Mamali ❤️");
 
@@ -124,80 +101,54 @@ function blowCandle(){
 }
 
 // ===============================
-// CONFETTI EFFECT
+// CONFETTI
 // ===============================
 
-function createConfetti(){
+function createConfetti() {
 
-    for(let i=0;i<120;i++){
+    for (let i = 0; i < 120; i++) {
 
-        let confetti=document.createElement("div");
+        let confetti = document.createElement("div");
 
-        confetti.className="confetti";
+        confetti.className = "confetti";
 
-        confetti.style.left=Math.random()*100+"vw";
+        confetti.style.left = Math.random() * 100 + "vw";
 
-        confetti.style.animationDuration=
+        confetti.style.animationDuration =
+            (Math.random() * 3 + 2) + "s";
 
-        (Math.random()*3+2)+"s";
+        confetti.style.opacity = Math.random();
 
-        confetti.style.opacity=Math.random();
-
-        confetti.style.transform=
-
-        "rotate("+Math.random()*360+"deg)";
+        confetti.style.transform =
+            "rotate(" + Math.random() * 360 + "deg)";
 
         document.body.appendChild(confetti);
 
-        setTimeout(()=>{
+        setTimeout(() => {
 
             confetti.remove();
 
-        },5000);
+        }, 5000);
 
     }
 
 }
 
 // ===============================
-// FINAL PAGE CONFETTI
-// ===============================
-
-const observer=new MutationObserver(()=>{
-
-if(currentPage===9){
-
-createConfetti();
-
-}
-
-});
-
-observer.observe(document.body,{
-
-attributes:true,
-
-subtree:true,
-
-childList:true
-
-});
-
-// ===============================
 // KEYBOARD SUPPORT
 // ===============================
 
-document.addEventListener("keydown",(e)=>{
+document.addEventListener("keydown", function(e){
 
-if(e.key==="ArrowRight"){
+    if(e.key==="ArrowRight"){
 
-if(currentPage<9){
+        if(currentPage<9){
 
-nextPage(currentPage+1);
+            nextPage(currentPage+1);
 
-}
+        }
 
-}
+    }
 
 });
 
@@ -207,46 +158,16 @@ nextPage(currentPage+1);
 
 function vibrate(){
 
-if(navigator.vibrate){
+    if(navigator.vibrate){
 
-navigator.vibrate(200);
+        navigator.vibrate(100);
 
-}
+    }
 
 }
 
 document.querySelectorAll("button").forEach(btn=>{
 
-btn.addEventListener("click",vibrate);
+    btn.addEventListener("click",vibrate);
 
 });
-
-// ===============================
-// COUNTDOWN (OPTIONAL)
-// ===============================
-
-let seconds=5;
-
-function countdown(){
-
-const timer=document.getElementById("count");
-
-if(timer){
-
-timer.innerHTML=seconds;
-
-seconds--;
-
-if(seconds>=0){
-
-setTimeout(countdown,1000);
-
-}
-
-}
-
-}
-
-// ===============================
-// END
-// ===============================
