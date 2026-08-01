@@ -66,7 +66,7 @@ document.body.addEventListener("click",function(){
 // Birthday Wishes
 // ==========================
 
-const wishes=[
+const wishes=[ Click )
 
 "🎂 Happy Birthday Mamali ❤️",
 
