@@ -1,0 +1,514 @@
+/* ===========================
+   GOOGLE FONT
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#0d0d14;
+
+    color:white;
+
+    overflow:hidden;
+
+}
+
+/* ===========================
+PAGE
+=========================== */
+
+.page{
+
+    width:100%;
+
+    height:100vh;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    padding:25px;
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+}
+
+.active{
+
+    display:flex;
+
+}
+
+/* ===========================
+HEADINGS
+=========================== */
+
+h1{
+
+    font-size:55px;
+
+    margin:20px 0;
+
+    font-family:'Playfair Display',serif;
+
+}
+
+h2{
+
+    font-size:38px;
+
+    color:#ffd54f;
+
+    margin:20px;
+
+}
+
+h3{
+
+    color:#ff82b2;
+
+    font-size:22px;
+
+    margin-bottom:15px;
+
+}
+
+p{
+
+    font-size:20px;
+
+    color:#d8d8d8;
+
+    line-height:1.8;
+
+    max-width:700px;
+
+}
+
+/* ===========================
+BUTTON
+=========================== */
+
+button{
+
+    margin-top:40px;
+
+    padding:18px 45px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:linear-gradient(to right,#f4c430,#ffe082);
+
+    color:#111;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* ===========================
+LETTER
+=========================== */
+
+.letter{
+
+    width:90%;
+
+    max-width:700px;
+
+    padding:35px;
+
+    background:#161b2d;
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,215,0,.3);
+
+    box-shadow:0 0 20px rgba(255,215,0,.1);
+
+}
+
+.letter p{
+
+    margin-top:20px;
+
+    line-height:2;
+
+    font-size:21px;
+
+}
+
+/* ===========================
+WORDS
+=========================== */
+
+.word{
+
+    margin:15px;
+
+    padding:18px 30px;
+
+    border-radius:18px;
+
+    background:#1b2238;
+
+    font-size:25px;
+
+    animation:float 3s infinite;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+/* ===========================
+STAR BUTTON
+=========================== */
+
+.wish-star{
+
+    font-size:90px;
+
+    cursor:pointer;
+
+    margin:40px;
+
+    transition:.4s;
+
+}
+
+.wish-star:hover{
+
+    transform:scale(1.2);
+
+}
+
+/* ===========================
+GIFT
+=========================== */
+
+.gift{
+
+    width:260px;
+
+    animation:gift 2s infinite;
+
+}
+
+@keyframes gift{
+
+0%{
+
+transform:rotate(-4deg);
+
+}
+
+50%{
+
+transform:rotate(4deg);
+
+}
+
+100%{
+
+transform:rotate(-4deg);
+
+}
+
+}
+
+/* ===========================
+CARD
+=========================== */
+
+.card{
+
+    width:90%;
+
+    max-width:700px;
+
+    background:#181d30;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    font-size:25px;
+
+    line-height:2;
+
+    border:1px solid rgba(255,215,0,.2);
+
+}
+
+/* ===========================
+CAKE
+=========================== */
+
+.cake{
+
+    width:320px;
+
+    margin-top:25px;
+
+}
+
+/* ===========================
+CAT
+=========================== */
+
+.cat{
+
+    width:260px;
+
+    margin:30px;
+
+}
+
+/* ===========================
+MUSIC BUTTON
+=========================== */
+
+.music-btn{
+
+    position:fixed;
+
+    right:25px;
+
+    top:25px;
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    background:#222;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    z-index:999;
+
+    box-shadow:0 0 15px rgba(255,215,0,.3);
+
+}
+
+/* ===========================
+BACKGROUND STARS
+=========================== */
+
+.stars{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+left:0;
+
+top:0;
+
+pointer-events:none;
+
+background-image:
+
+radial-gradient(#ffd54f 1px,transparent 1px),
+
+radial-gradient(#ffffff 1px,transparent 1px),
+
+radial-gradient(#ffdd55 1px,transparent 1px);
+
+background-size:
+
+120px 120px,
+
+180px 180px,
+
+250px 250px;
+
+animation:moveStars 40s linear infinite;
+
+opacity:.7;
+
+}
+
+@keyframes moveStars{
+
+from{
+
+background-position:0 0,0 0,0 0;
+
+}
+
+to{
+
+background-position:0 800px,0 500px,0 1000px;
+
+}
+
+}
+
+/* ===========================
+FADE ANIMATION
+=========================== */
+
+.page{
+
+animation:fade .8s;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:scale(.95);
+
+}
+
+to{
+
+opacity:1;
+
+transform:scale(1);
+
+}
+
+}
+
+/* ===========================
+MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+h1{
+
+font-size:42px;
+
+}
+
+h2{
+
+font-size:28px;
+
+}
+
+p{
+
+font-size:18px;
+
+}
+
+button{
+
+font-size:18px;
+
+padding:15px 35px;
+
+}
+
+.letter{
+
+padding:25px;
+
+}
+
+.letter p{
+
+font-size:18px;
+
+}
+
+.card{
+
+font-size:20px;
+
+padding:25px;
+
+}
+
+.cake{
+
+width:240px;
+
+}
+
+.gift{
+
+width:210px;
+
+}
+
+.cat{
+
+width:200px;
+
+}
+
+.word{
+
+font-size:20px;
+
+}
+
+}
