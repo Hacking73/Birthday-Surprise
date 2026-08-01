@@ -1,26 +1,26 @@
-// ===============================
-// PAGE NAVIGATION
-// ===============================
+// ==========================
+// Current Page
+// ==========================
 
 let currentPage = 1;
 
+// ==========================
+// Next Page
+// ==========================
+
 function nextPage(page){
 
-    document
-    .getElementById("page"+currentPage)
-    .classList.remove("active");
+    document.getElementById("page"+currentPage).classList.remove("active");
 
-    document
-    .getElementById("page"+page)
-    .classList.add("active");
+    document.getElementById("page"+page).classList.add("active");
 
     currentPage = page;
 
 }
 
-// ===============================
-// MUSIC
-// ===============================
+// ==========================
+// Music
+// ==========================
 
 const music = document.getElementById("music");
 
@@ -34,23 +34,21 @@ function toggleMusic(){
 
         playing = false;
 
-        document.querySelector(".music-btn").innerHTML="🔇";
+        document.querySelector(".music-btn").innerHTML = "🔇";
 
-    }
-
-    else{
+    }else{
 
         music.play();
 
         playing = true;
 
-        document.querySelector(".music-btn").innerHTML="🔊";
+        document.querySelector(".music-btn").innerHTML = "🔊";
 
     }
 
 }
 
-// Auto Play After First Click
+// Auto Play
 
 document.body.addEventListener("click",function(){
 
@@ -58,36 +56,33 @@ document.body.addEventListener("click",function(){
 
         music.play();
 
-        playing=true;
-
-        document.querySelector(".music-btn").innerHTML="🔊";
+        playing = true;
 
     }
 
 },{once:true});
 
-
-// ===============================
-// RANDOM BIRTHDAY WISH
-// ===============================
+// ==========================
+// Birthday Wishes
+// ==========================
 
 const wishes=[
 
 "🎂 Happy Birthday Mamali ❤️",
 
-"🌹 May all your dreams come true.",
+"🌹 May God bless you.",
 
-"💖 Stay happy forever.",
+"💖 Stay Happy Forever.",
 
-"🥰 You deserve endless love.",
+"🥰 You are very Special.",
 
-"🎉 Wishing you joy and success.",
+"🎉 Enjoy Your Beautiful Day.",
 
-"🌸 Keep smiling always.",
+"🌸 Keep Smiling Always.",
 
-"❤️ You are my favorite person.",
+"❤️ Wishing You Endless Love.",
 
-"🎁 Have the most wonderful birthday."
+"🎁 Lots Of Happiness For You."
 
 ];
 
@@ -99,37 +94,35 @@ function showWish(){
 
 }
 
-// ===============================
-// LIGHT CANDLE
-// ===============================
+// ==========================
+// Cake
+// ==========================
 
 function lightCandle(){
 
-    alert("🕯️ Candles are now glowing!");
+    alert("🕯️ Candles are Lighted!");
 
     nextPage(8);
 
 }
 
-// ===============================
-// BLOW CANDLE
-// ===============================
-
 function blowCandle(){
 
     alert("🎉 Happy Birthday Mamali ❤️");
+
+    createConfetti();
 
     nextPage(9);
 
 }
 
-// ===============================
-// CONFETTI EFFECT
-// ===============================
+// ==========================
+// Confetti
+// ==========================
 
 function createConfetti(){
 
-    for(let i=0;i<120;i++){
+    for(let i=0;i<100;i++){
 
         let confetti=document.createElement("div");
 
@@ -137,19 +130,11 @@ function createConfetti(){
 
         confetti.style.left=Math.random()*100+"vw";
 
-        confetti.style.animationDuration=
-
-        (Math.random()*3+2)+"s";
-
-        confetti.style.opacity=Math.random();
-
-        confetti.style.transform=
-
-        "rotate("+Math.random()*360+"deg)";
+        confetti.style.animationDuration=(Math.random()*3+2)+"s";
 
         document.body.appendChild(confetti);
 
-        setTimeout(()=>{
+        setTimeout(function(){
 
             confetti.remove();
 
@@ -159,94 +144,38 @@ function createConfetti(){
 
 }
 
-// ===============================
-// FINAL PAGE CONFETTI
-// ===============================
+// ==========================
+// Keyboard Support
+// ==========================
 
-const observer=new MutationObserver(()=>{
+document.addEventListener("keydown",function(e){
 
-if(currentPage===9){
+    if(e.key==="ArrowRight"){
 
-createConfetti();
+        if(currentPage<9){
 
-}
+            nextPage(currentPage+1);
 
-});
+        }
 
-observer.observe(document.body,{
-
-attributes:true,
-
-subtree:true,
-
-childList:true
+    }
 
 });
 
-// ===============================
-// KEYBOARD SUPPORT
-// ===============================
-
-document.addEventListener("keydown",(e)=>{
-
-if(e.key==="ArrowRight"){
-
-if(currentPage<9){
-
-nextPage(currentPage+1);
-
-}
-
-}
-
-});
-
-// ===============================
-// MOBILE VIBRATION
-// ===============================
-
-function vibrate(){
+// ==========================
+// Button Vibration
+// ==========================
 
 if(navigator.vibrate){
 
-navigator.vibrate(200);
+    document.querySelectorAll("button").forEach(function(btn){
+
+        btn.addEventListener("click",function(){
+
+            navigator.vibrate(100);
+
+        });
+
+    });
 
 }
-
-}
-
-document.querySelectorAll("button").forEach(btn=>{
-
-btn.addEventListener("click",vibrate);
-
-});
-
-// ===============================
-// COUNTDOWN (OPTIONAL)
-// ===============================
-
-let seconds=5;
-
-function countdown(){
-
-const timer=document.getElementById("count");
-
-if(timer){
-
-timer.innerHTML=seconds;
-
-seconds--;
-
-if(seconds>=0){
-
-setTimeout(countdown,1000);
-
-}
-
-}
-
-}
-
-// ===============================
-// END
-// ===============================
