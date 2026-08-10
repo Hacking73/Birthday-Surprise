@@ -49,7 +49,7 @@ document.body.addEventListener("click", () => {
 
 const wishes = [
 
-"🎂 Happy Birthday Mamali ❤️",
+"🎂 Happy Birthday Jhili ❤️",
 "🌹 May all your dreams come true.",
 "💖 Stay Happy Forever.",
 "🥰 You are very Special.",
